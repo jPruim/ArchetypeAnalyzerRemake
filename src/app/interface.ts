@@ -198,7 +198,7 @@ export interface Question {
     motivated?: number;
     mutual?: number;
     natural?: number;
-    new?: number;
+    "new"?: number;
     nonconformity?: number;
     objective?: number;
     oneness?: number;
