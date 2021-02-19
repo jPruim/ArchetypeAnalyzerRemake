@@ -5,5 +5,17 @@
 </ion-header>
 
 <ion-content>
-  <p>This is the future results page</p>
+  <div *ngIf="attributeDisplay && attributeDisplay?.length>0">
+    <p class="subtitle">Your Personal Results</p>
+    <ion-card *ngFor="let item of attributeDisplay" class="attribute-ion-card">
+      <ion-card-header>
+        <ion-card-title class="attribute-label"> {{item.attribute}} {{item.ratio}}</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </div>
+  <div *ngIf="!attributeDisplay || !attributeDisplay?.length>0">
+    <p class="subtitle">You have no Data!</p>
+    <p class="middletext">Answer some questions first</p>
+  </div>
+
 </ion-content>

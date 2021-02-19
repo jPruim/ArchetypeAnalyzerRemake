@@ -12,14 +12,14 @@
       <ion-title size="large">Questionnaire</ion-title>
     </ion-toolbar>
   </ion-header>
-  <div style="width:100%;height:50%; display:flex; justify-content: center;align-items:center;">
-    <ion-text style="font-size:x-large;">{{question?.text}}</ion-text>
+  <div class="question-div">
+    <ion-text class="question-text">{{question?.text}}</ion-text>
   </div>
   <div>
-    <ion-button id="3" (click)="nextQuestion(3)" expand=block>Strongly Agree</ion-button>
-    <ion-button id="2" (click)="nextQuestion(2)" expand=block> Agree</ion-button>
-    <ion-button id="1" (click)="nextQuestion(1)" expand=block>Disagree</ion-button>
-    <ion-button id="0" (click)="nextQuestion(0)" expand=block>Strongly Disagree</ion-button>
+    <ion-button id="3" (click)="nextQuestion(3)" class="answer-button">Strongly Agree</ion-button>
+    <ion-button id="2" (click)="nextQuestion(2)" class="answer-button"> Agree</ion-button>
+    <ion-button id="1" (click)="nextQuestion(1)" class="answer-button">Disagree</ion-button>
+    <ion-button id="0" (click)="nextQuestion(0)" class="answer-button">Strongly Disagree</ion-button>
   </div>
 
 </ion-content>

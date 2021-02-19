@@ -1,0 +1,23 @@
+.question-div{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    background-color: var(--ion-color-text);
+}
+
+.question-text{
+    font-size: x-large;
+    text-align: center;
+}
+
+.answer-button{
+    width: 90%;
+    min-height: 2rem;
+    border-radius: 5px;
+    margin: 5px 5%;
+    text-transform: none;
+    font-weight: normal;
+}

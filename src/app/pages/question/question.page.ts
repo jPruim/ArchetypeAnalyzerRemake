@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Question } from 'src/app/interface';
+import { Question, QuestionAnswer } from 'src/app/interface';
 import { QuestionService } from 'src/app/services/question.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -12,7 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 export class QuestionPage implements OnInit {
   private qnum: number;
   private question: Question;
-  private answers: any;
+  private answers: QuestionAnswer[];
   constructor(private qService: QuestionService, private uService: UserService) {
     this.qService.question$.subscribe(value => this.question = value);
     this.uService.answers$.subscribe(val => this.answers = val);
@@ -22,8 +22,11 @@ export class QuestionPage implements OnInit {
 
   }
   nextQuestion(clicked_id) {
-    console.log("Response: ", clicked_id);
-    this.answers[this.question.id] = clicked_id;
+    let i = this.answers.findIndex((el) => el.id === this.question.id);
+    if (i === -1) {
+      i = this.answers.length;
+    }
+    this.answers[i] = { id: this.question.id, response: clicked_id }
     this.uService.answers$.next(this.answers);
     this.qService.nextQuestion();
   }

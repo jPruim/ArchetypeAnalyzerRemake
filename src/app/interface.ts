@@ -1,6 +1,14 @@
-export interface Question {
+export interface Question extends AttributeValue {
     id: number;
     text: String;
+    questionSet?: number;
+}
+export interface QuestionAnswer {
+    id: number,
+    response: number, //3 is strongly agree, 2 is agree, 1 is disagree, 0 is strongly disagree
+}
+
+export interface AttributeValue {
     questionSet?: number;
     ability?: number;
     abstract?: number;
@@ -293,4 +301,8 @@ export interface Question {
     work?: number;
     world?: number;
     wrong?: number;
+}
+export interface AttributeDisplay {
+    attribute: string;
+    ratio: number;
 }

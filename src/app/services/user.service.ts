@@ -1,35 +1,48 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { QuestionDictionary } from 'src/assets/QuestionList';
+import { AttributeValue, QuestionAnswer } from '../interface';
+import { QuestionService } from './question.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  public loggedIn: boolean
-  public answers$: BehaviorSubject<any>
-  public results$: BehaviorSubject<number>
-  private answers: any
-  constructor() {
+  public loggedIn: boolean;
+  public answers$: BehaviorSubject<Array<QuestionAnswer>>;
+  public attributes$ = new BehaviorSubject<AttributeValue>({});
+  public maxAttributes$ = new BehaviorSubject<AttributeValue>({});
+
+  private answers: Array<QuestionAnswer>;
+  private questionList = QuestionDictionary;
+
+  constructor(private qService: QuestionService) {
     this.loggedIn = false;
-    this.answers$ = new BehaviorSubject({})
+    this.answers$ = new BehaviorSubject([])
     this.answers$.subscribe(val => {
       this.answers = val;
-      this.getResults()
+      this.calculateAttributes();
     });
-    this.results$ = new BehaviorSubject(1.5);
   }
-  getResults(): number {
-    let averageResponse = 1.5;
-    let total = 0;
-    let number = 0;
-    for (const [_, value] of Object.entries(this.answers)) {
-      number++;
-      total += Number(value);
+
+  calculateAttributes() {
+    let attr = this.attributes$.getValue();
+    let maxAttr = this.maxAttributes$.getValue();
+    if (this.answers.length == 0) {
+      return;
     }
-    if (number > 0) {
-      averageResponse = total / number;
-      this.results$.next(averageResponse);
+    for (let i = 0; i < this.answers.length; i++) {
+      let q = this.questionList[this.answers[i].id]
+      Object.keys(q).forEach((el) => {
+        if (this.qService.isAttributeKey(el)) {
+          attr[el] = attr[el] + q[el] * this.qService.getNumericalValue(this.answers[i].response) || q[el] * this.qService.getNumericalValue(this.answers[i].response);
+          maxAttr[el] = maxAttr[el] + q[el] * 3 || q[el] * 3;
+        }
+      })
     }
-    return averageResponse;
+    this.maxAttributes$.next(maxAttr);
+    this.attributes$.next(attr);
   }
+
+
 }

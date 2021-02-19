@@ -1,6 +1,6 @@
 import { Question } from "src/app/interface";
 
-export const questionDictionary: Question[] = [
+export const QuestionDictionary: Question[] = [
     {
         "id": 0,
         "text": "I can communicate abstract ideas.",
