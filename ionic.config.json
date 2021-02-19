@@ -1,0 +1,7 @@
+{
+  "name": "ArchetypeAnalyzer3",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
