@@ -27,7 +27,6 @@ export interface Question {
     Aware?: number;
     Balance?: number;
     Beauty?: number;
-    "Behavior"?: number;
     "Behind the Scenes"?: number;
     Belief?: number;
     Belong?: number;
@@ -136,6 +135,7 @@ export interface Question {
     "Guidance"?: number;
     Goal?: number;
     Good?: number;
+    "Good Behavior"?: number;
     Grounded?: number;
     Growth?: number;
     Guide?: number;
