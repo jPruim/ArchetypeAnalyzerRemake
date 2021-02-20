@@ -13,7 +13,7 @@
       </ion-card-header>
     </ion-card>
   </div>
-  <div *ngIf="!attributeDisplay || !attributeDisplay?.length>0">
+  <div *ngIf="!attributeDisplay || !(attributeDisplay?.length>0)">
     <p class="subtitle">You have no Data!</p>
     <p class="middletext">Answer some questions first</p>
   </div>

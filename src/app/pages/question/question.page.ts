@@ -10,8 +10,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./question.page.scss'],
 })
 export class QuestionPage implements OnInit {
-  private qnum: number;
-  private question: Question;
+  public question: Question;
   private answers: QuestionAnswer[];
   constructor(private qService: QuestionService, private uService: UserService) {
     this.qService.question$.subscribe(value => this.question = value);
