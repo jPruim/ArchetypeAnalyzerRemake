@@ -1,7 +1,7 @@
 # ArchetypeAnalyzerRemake
 To run:
 
-Install Ionic, node.js
+Install node.js, then Ionic 
 
 Run npm install
 
