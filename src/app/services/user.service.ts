@@ -10,8 +10,9 @@ import { QuestionService } from './question.service';
 export class UserService {
   public loggedIn: boolean;
   public answers$: BehaviorSubject<Array<QuestionAnswer>>;
-  public attributes$ = new BehaviorSubject<AttributeValue>({});
+  public attributes$ = new BehaviorSubject<AttributeValue>({}); //With ratioAttributes being added, attributres and maxAttributes may not need to be exposed, i.e. could use something simpler than a BehaviorSubject
   public maxAttributes$ = new BehaviorSubject<AttributeValue>({});
+  public ratioAttributes$ = new BehaviorSubject<AttributeValue>({});
 
   private answers: Array<QuestionAnswer>;
   private questionList = QuestionDictionary;
@@ -28,6 +29,7 @@ export class UserService {
   calculateAttributes() {
     let attr = this.attributes$.getValue();
     let maxAttr = this.maxAttributes$.getValue();
+    let ratioAttr = this.ratioAttributes$.getValue();
     if (this.answers.length == 0) {
       return;
     }
@@ -37,11 +39,13 @@ export class UserService {
         if (this.qService.isAttributeKey(el)) {
           attr[el] = attr[el] + q[el] * this.qService.getNumericalValue(this.answers[i].response) || q[el] * this.qService.getNumericalValue(this.answers[i].response);
           maxAttr[el] = maxAttr[el] + q[el] * 3 || q[el] * 3;
+          ratioAttr[el] = attr[el]/maxAttr[el];
         }
       })
     }
     this.maxAttributes$.next(maxAttr);
     this.attributes$.next(attr);
+    this.ratioAttributes$.next(ratioAttr);
   }
 
 
