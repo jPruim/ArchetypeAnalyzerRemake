@@ -306,3 +306,21 @@ export interface AttributeDisplay {
     attribute: string;
     ratio: number;
 }
+
+export interface AttributeFamilyValue extends FamilyValue {
+    attribute: String;
+}
+export interface FamilyValue {
+    caregiver?: number;
+    citizen?: number;
+    creator?: number;
+    explorer?: number;
+    hero?: number;
+    innocent?: number;
+    jester?: number;
+    lover?: number;
+    magician?: number;
+    rebel?: number;
+    sage?: number;
+    sovereign?: number;
+}

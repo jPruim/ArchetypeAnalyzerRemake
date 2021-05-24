@@ -40,7 +40,6 @@ export class UserService {
           attr[el] = attr[el] + q[el] * this.qService.getNumericalValue(this.answers[i].response) || q[el] * this.qService.getNumericalValue(this.answers[i].response);
           maxAttr[el] = maxAttr[el] + q[el] * 3 || q[el] * 3;
           ratioAttr[el] = Math.trunc(attr[el]*100/maxAttr[el]);
-          console.log(ratioAttr);
         }
       })
     }
