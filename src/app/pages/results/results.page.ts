@@ -33,7 +33,6 @@ export class ResultsPage implements OnInit {
     let dis: Array<AttributeDisplay> = [];
     Object.keys(this.attributes).forEach(key => {
       dis.push({ attribute: key, ratio: this.ratioAttributes[key] });
-      console.log(this.ratioAttributes[key])
     });
     this.attributeDisplay = dis.sort((el1, el2) => (el2.ratio - el1.ratio));
   }
