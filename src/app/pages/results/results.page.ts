@@ -10,16 +10,19 @@ import { UserService } from 'src/app/services/user.service';
 export class ResultsPage implements OnInit {
   public attributes: AttributeValue;
   public maxAttributes: AttributeValue;
+  public ratioAttributes: AttributeValue;
   public attributeDisplay: Array<AttributeDisplay>;
 
   constructor(private uService: UserService) {
     this.attributes = this.uService.attributes$.getValue();
     this.maxAttributes = this.uService.maxAttributes$.getValue();
+    this.ratioAttributes = this.uService.ratioAttributes$.getValue();
     this.uService.attributes$.subscribe((val) => {
       this.attributes = val;
       this.generateTable();
     });
     this.uService.maxAttributes$.subscribe((val) => this.maxAttributes = val);
+    this.uService.ratioAttributes$.subscribe((val) => this.ratioAttributes = val);
   }
 
   ngOnInit() {
@@ -29,7 +32,8 @@ export class ResultsPage implements OnInit {
 
     let dis: Array<AttributeDisplay> = [];
     Object.keys(this.attributes).forEach(key => {
-      dis.push({ attribute: key, ratio: Math.trunc(this.attributes[key] / this.maxAttributes[key] * 100) });
+      dis.push({ attribute: key, ratio: this.ratioAttributes[key] });
+      console.log(this.ratioAttributes[key])
     });
     this.attributeDisplay = dis.sort((el1, el2) => (el2.ratio - el1.ratio));
   }
