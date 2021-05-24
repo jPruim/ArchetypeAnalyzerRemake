@@ -14,7 +14,7 @@ export class ResultsPage implements OnInit {
 
   constructor(private uService: UserService) {
     this.attributes = this.uService.attributes$.getValue();
-    this.maxAttributes = this.uService.attributes$.getValue();
+    this.maxAttributes = this.uService.maxAttributes$.getValue();
     this.uService.attributes$.subscribe((val) => {
       this.attributes = val;
       this.generateTable();
