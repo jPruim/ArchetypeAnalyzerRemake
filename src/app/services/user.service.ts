@@ -37,7 +37,7 @@ export class UserService {
     let ratioAttr = this.ratioAttributes$.getValue();
 
     let fam = this.families$.getValue();
-    let percentFamilies = this.percentFamilies$.getValue();
+    let percentFam = this.percentFamilies$.getValue();
 
     if (this.answers.length == 0) {
       return;
@@ -73,13 +73,14 @@ export class UserService {
     console.log("familySum:");
     console.log(familySum);
     Object.keys(fam).forEach((family) => {
-      percentFamilies[family] = Math.trunc(fam[family]*100/familySum);
+      percentFam[family] = Math.trunc(fam[family]*100/familySum);
     })
-    console.log("percentFamilies:");
-    console.log(percentFamilies);
+    console.log("percentFam:");
+    console.log(percentFam);
     this.maxAttributes$.next(maxAttr);
     this.attributes$.next(attr);
     this.ratioAttributes$.next(ratioAttr);
+    this.percentFamilies$.next(percentFam);
   }
 
 

@@ -324,3 +324,7 @@ export interface FamilyValue {
     sage?: number;
     sovereign?: number;
 }
+export interface FamilyDisplay {
+    family: string;
+    percent: number;
+}

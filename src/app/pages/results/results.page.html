@@ -5,8 +5,16 @@
 </ion-header>
 
 <ion-content>
+  <div *ngIf="familyDisplay && familyDisplay?.length>0">
+    <p class="subtitle">Your Personal Family Results</p>
+    <ion-card *ngFor="let item of familyDisplay" class="attribute-ion-card">
+      <ion-card-header>
+        <ion-card-title class="attribute-label"> {{item.family}} {{item.percent}}</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </div>
   <div *ngIf="attributeDisplay && attributeDisplay?.length>0">
-    <p class="subtitle">Your Personal Results</p>
+    <p class="subtitle">Your Personal Attribute Results</p>
     <ion-card *ngFor="let item of attributeDisplay" class="attribute-ion-card">
       <ion-card-header>
         <ion-card-title class="attribute-label"> {{item.attribute}} {{item.ratio}}</ion-card-title>
