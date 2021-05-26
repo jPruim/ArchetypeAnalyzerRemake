@@ -56,5 +56,120 @@ export const AttributesToFamiliesDictionary: AttributeFamilyValue[] = [
         attribute: "connection",
         sage: 1,
         sovereign: 1
+    },
+    {
+        attribute: "convention",
+        rebel: -1
+    },
+    {
+        attribute: "creative",
+        creator: 1,
+        innocent: 1
+    },
+    {
+        attribute: "curious",
+        magician: 1
+    },
+    {
+        attribute: "desire",
+        lover: 1,
+        sage: 1
+    },
+    {
+        attribute: "discovery",
+        explorer: 1
+    },
+    {
+        attribute: "driven",
+        innocent: 1,
+        magician: 1,
+        sovereign: 1
+    },
+    {
+        attribute: "emotion",
+        jester: 1,
+        lover: 1
+    },
+    {
+        attribute: "endurance",
+        hero: 1
+    },
+    {
+        attribute: "energy",
+        innocent: 1,
+        jester: 1
+    },
+    {
+        attribute: "experience",
+        explorer: 1,
+        lover: 1
+    },
+    {
+        attribute: "explore",
+        explorer: 1,
+        magician: 1
+    },
+    {
+        attribute: "expression",
+        creator: 1,
+        innocent: 1
+    },
+    {
+        attribute: "external",
+        explorer: 1
+    },
+    {
+        attribute: "focus",
+        magician: 1
+    },
+    {
+        attribute: "freedom",
+        innocent: 1
+    },
+    {
+        attribute: "goal",
+        hero: 1
+    },
+    {
+        attribute: "grounded",
+        magician: 1
+    },
+    {
+        attribute: "honor",
+        hero: 1
+    },
+    {
+        attribute: "humanity",
+        caregiver: 1,
+        citizen: 1
+    },
+    {
+        attribute: "ideas",
+        creator: 1
+    },
+    {
+        attribute: "innovation",
+        creator: 1
+    },
+    {
+        attribute: "inspire",
+        innocent: 1
+    },
+    {
+        attribute: "explore",
+        explorer: 1,
+        magician: 1
+    },
+    {
+        attribute: "intelect",
+        explorer: 1
+    },
+    {
+        attribute: "journey",
+        explorer: 1
+    },
+    {
+        attribute: "justice",
+        hero: 1
     }
 ]
