@@ -32,5 +32,29 @@ export const AttributesToFamiliesDictionary: AttributeFamilyValue[] = [
     {
         attribute: "challenge",
         hero: 1
+    },
+    {
+        attribute: "change",
+        jester: 1,
+        magician: 1,
+        rebel: 1
+    },
+    {
+        attribute: "channel",
+        creator: 1
+    },
+    {
+        attribute: "communication",
+        caregiver: 1,
+        citizen: 1
+    },
+    {
+        attribute: "compassion",
+        caregiver: 1
+    },
+    {
+        attribute: "connection",
+        sage: 1,
+        sovereign: 1
     }
 ]
