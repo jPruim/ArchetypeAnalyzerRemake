@@ -68,7 +68,7 @@ export class UserService {
     console.log(fam);
     let familySum = 0;
     Object.keys(fam).forEach((family) => {
-      familySum = familySum + fam[family];
+      familySum = familySum + Math.abs(fam[family]);
     })
     console.log("familySum:");
     console.log(familySum);
