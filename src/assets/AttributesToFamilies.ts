@@ -171,5 +171,108 @@ export const AttributesToFamiliesDictionary: AttributeFamilyValue[] = [
     {
         attribute: "justice",
         hero: 1
+    },
+    {
+        attribute: "knowledge",
+        explorer: 1,
+        lover: 1
+    },
+    {
+        attribute: "leadership",
+        citizen: 1,
+        sovereign: 1
+    },
+    {
+        attribute: "learn",
+        explorer: 1
+    },
+    {
+        attribute: "life",
+        creator: 1,
+        explorer: 1,
+        innocent: 1,
+        lover: 1,
+        sage: 1
+    },
+    {
+        attribute: "listen",
+        citizen: 1
+    },
+    {
+        attribute: "love",
+        caregiver: 1,
+        lover: 1
+    },
+    {
+        attribute: "moment",
+        magician: 1
+    },
+    {
+        attribute: "motivated",
+        hero: 1,
+        sage: 1
+    },
+    {
+        attribute: "order",
+        sovereign: 1
+    },
+    {
+        attribute: "others",
+        caregiver: 1,
+        citizen: 1,
+        hero: 1,
+        innocent: 1,
+        jester: 1,
+        lover: 1
+    },
+    {
+        attribute: "passion",
+        innocent: 1
+    },
+    {
+        attribute: "people",
+        jester: 1
+    },
+    {
+        attribute: "play",
+        jester: 1
+    },
+    {
+        attribute: "possibility",
+        innocent: 1,
+        jester: 1
+    },
+    {
+        attribute: "potential",
+        innocent: 1
+    },
+    {
+        attribute: "power",
+        creator: 1,
+        hero: 1,
+        innocent: 1,
+        lover: 1,
+        sovereign: 1
+    },
+    {
+        attribute: "rebel",
+        rebel: 1
+    },
+    {
+        attribute: "relationship",
+        lover: 1
+    },
+    {
+        attribute: "respect",
+        caregiver: 1
+    },
+    {
+        attribute: "responsibility",
+        caregiver: 1,
+        sovereign: 1
+    },
+    {
+        attribute: "risk",
+        rebel: 1
     }
 ]
