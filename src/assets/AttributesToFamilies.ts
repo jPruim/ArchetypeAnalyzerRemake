@@ -274,5 +274,63 @@ export const AttributesToFamiliesDictionary: AttributeFamilyValue[] = [
     {
         attribute: "risk",
         rebel: 1
+    },
+    {
+        attribute: "sacrifice",
+        caregiver: 1
+    },
+    {
+        attribute: "security",
+        rebel: -1
+    },
+    {
+        attribute: "sense",
+        sovereign: 1
+    },
+    {
+        attribute: "serve",
+        caregiver: 1
+    },
+    {
+        attribute: "sexual",
+        lover: 1
+    },
+    {
+        attribute: "spiritual",
+        lover: 1
+    },
+    {
+        attribute: "support",
+        caregiver: 1,
+        citizen: 1
+    },
+    {
+        attribute: "sage",
+        rebel: 1
+    },
+    {
+        attribute: "transform",
+        lover: 1,
+        magician: 1
+    },
+    {
+        attribute: "truth",
+        sage: 1
+    },
+    {
+        attribute: "uncover",
+        sage: 1
+    },
+    {
+        attribute: "understand",
+        magician: 1
+    },
+    {
+        attribute: "unknown",
+        explorer: 1
+    },
+    {
+        attribute: "world",
+        explorer: 1
     }
 ]
