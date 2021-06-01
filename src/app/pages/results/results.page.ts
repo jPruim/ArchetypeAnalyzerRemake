@@ -13,13 +13,13 @@ export class ResultsPage implements OnInit {
   public attributeDisplay: Array<AttributeDisplay>;
 
   constructor(private uService: UserService) {
-    this.attributes = this.uService.attributes$.getValue();
-    this.maxAttributes = this.uService.attributes$.getValue();
+    this.attributes = this.uService.attributes$.getValue()[0];
+    this.maxAttributes = this.uService.attributes$.getValue()[1];
     this.uService.attributes$.subscribe((val) => {
-      this.attributes = val;
+      this.attributes = val[0];
+      this.maxAttributes = val[1];
       this.generateTable();
     });
-    this.uService.maxAttributes$.subscribe((val) => this.maxAttributes = val);
   }
 
   ngOnInit() {

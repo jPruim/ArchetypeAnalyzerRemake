@@ -10,8 +10,8 @@ import { QuestionService } from './question.service';
 export class UserService {
   public loggedIn: boolean;
   public answers$: BehaviorSubject<Array<QuestionAnswer>>;
-  public attributes$ = new BehaviorSubject<AttributeValue>({});
-  public maxAttributes$ = new BehaviorSubject<AttributeValue>({});
+  //index of 0 is attributes, 1 is max attributes
+  public attributes$ = new BehaviorSubject<AttributeValue[]>([]);
 
   private answers: Array<QuestionAnswer>;
   private questionList = QuestionDictionary;
@@ -26,11 +26,11 @@ export class UserService {
   }
 
   calculateAttributes() {
-    let attr = this.attributes$.getValue();
-    let maxAttr = this.maxAttributes$.getValue();
     if (this.answers.length == 0) {
       return;
     }
+    let attr = {};
+    let maxAttr = {};
     for (let i = 0; i < this.answers.length; i++) {
       let q = this.questionList[this.answers[i].id]
       Object.keys(q).forEach((el) => {
@@ -40,8 +40,7 @@ export class UserService {
         }
       })
     }
-    this.maxAttributes$.next(maxAttr);
-    this.attributes$.next(attr);
+    this.attributes$.next([attr,maxAttr]);
   }
 
 
