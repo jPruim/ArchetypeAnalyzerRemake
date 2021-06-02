@@ -328,3 +328,11 @@ export interface FamilyDisplay {
     family: string;
     percent: number;
 }
+
+export interface FamilyReportDisplay {
+    family: string;
+    description: string;
+    challenges: string;
+    relationships: string;
+    tips: string;
+}
