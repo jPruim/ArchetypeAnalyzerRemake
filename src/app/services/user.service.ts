@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { QuestionDictionary } from 'src/assets/QuestionList';
-import { AttributeValue, QuestionAnswer } from '../interface';
+import { AttributesToFamiliesDictionary } from 'src/assets/AttributesToFamilies';
+import { FamilyValue, AttributeValue, QuestionAnswer } from '../interface';
 import { QuestionService } from './question.service';
 
 @Injectable({
@@ -13,8 +14,12 @@ export class UserService {
   //index of 0 is attributes, 1 is max attributes
   public attributes$ = new BehaviorSubject<AttributeValue[]>([{},{},{}]);
 
+  public families$ = new BehaviorSubject<FamilyValue>({});
+  public percentFamilies$ = new BehaviorSubject<FamilyValue>({});
+
   private answers: Array<QuestionAnswer>;
   private questionList = QuestionDictionary;
+  private attributeCon = AttributesToFamiliesDictionary;
 
   constructor(private qService: QuestionService) {
     this.loggedIn = false;
@@ -32,17 +37,41 @@ export class UserService {
     let attr = {};
     let maxAttr = {};
     let ratioAttr = {};
+
+    let fam = {};
+    let percentFam = {};
+
     for (let i = 0; i < this.answers.length; i++) {
       let q = this.questionList[this.answers[i].id]
       Object.keys(q).forEach((el) => {
         if (this.qService.isAttributeKey(el)) {
-          attr[el] = attr[el] + q[el] * this.qService.getNumericalValue(this.answers[i].response) || q[el] * this.qService.getNumericalValue(this.answers[i].response);
+          let attrVal = q[el] * this.qService.getNumericalValue(this.answers[i].response)
+          attr[el] = attr[el] + attrVal || attrVal;
           maxAttr[el] = maxAttr[el] + Math.abs(q[el]) * 3 || Math.abs(q[el]) * 3;
           ratioAttr[el] = Math.trunc(attr[el]*100/maxAttr[el]);
         }
       })
     }
+    Object.keys(attr).forEach((el) => {
+      this.attributeCon.forEach((conAttr) => {
+        if (el == conAttr.attribute) {
+          Object.keys(conAttr).forEach((conFam) => {
+            if (conFam !== "attribute") {
+              fam[conFam] = conAttr[conFam]*attr[el];
+            }
+          })
+        }
+      })
+    })
+    let familySum = 0;
+    Object.keys(fam).forEach((family) => {
+      familySum = familySum + Math.abs(fam[family]);
+    })
+    Object.keys(fam).forEach((family) => {
+      percentFam[family] = Math.trunc(fam[family]*100/familySum);
+    })
     this.attributes$.next([attr,maxAttr,ratioAttr]);
+    this.percentFamilies$.next(percentFam);
   }
 
 
