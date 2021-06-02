@@ -41,7 +41,7 @@ export class ResultsPage implements OnInit {
     Object.keys(this.attributes).forEach(key => {
       dis.push({ attribute: key, ratio: this.ratioAttributes[key] });
     });
-    this.attributeDisplay = dis.sort((el1, el2) => (el1.attribute.localeCompare(el2.attribute)));
+    this.attributeDisplay = dis.sort((el1, el2) => (el2.ratio - el1.ratio));
   }
 
   generateFamilyTable() {
