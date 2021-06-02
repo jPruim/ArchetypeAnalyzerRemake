@@ -10,14 +10,17 @@ import { UserService } from 'src/app/services/user.service';
 export class ResultsPage implements OnInit {
   public attributes: AttributeValue;
   public maxAttributes: AttributeValue;
+  public ratioAttributes: AttributeValue;
   public attributeDisplay: Array<AttributeDisplay>;
 
   constructor(private uService: UserService) {
     this.attributes = this.uService.attributes$.getValue()[0];
     this.maxAttributes = this.uService.attributes$.getValue()[1];
+    this.ratioAttributes = this.uService.attributes$.getValue()[2];
     this.uService.attributes$.subscribe((val) => {
       this.attributes = val[0];
       this.maxAttributes = val[1];
+      this.ratioAttributes = val[2];
       this.generateTable();
     });
   }
