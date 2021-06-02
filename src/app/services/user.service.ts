@@ -11,7 +11,7 @@ export class UserService {
   public loggedIn: boolean;
   public answers$: BehaviorSubject<Array<QuestionAnswer>>;
   //index of 0 is attributes, 1 is max attributes
-  public attributes$ = new BehaviorSubject<AttributeValue[]>([{},{}]);
+  public attributes$ = new BehaviorSubject<AttributeValue[]>([{},{},{}]);
 
   private answers: Array<QuestionAnswer>;
   private questionList = QuestionDictionary;
@@ -31,6 +31,7 @@ export class UserService {
     }
     let attr = {};
     let maxAttr = {};
+    let ratioAttr = {};
     for (let i = 0; i < this.answers.length; i++) {
       let q = this.questionList[this.answers[i].id]
       Object.keys(q).forEach((el) => {
@@ -40,7 +41,7 @@ export class UserService {
         }
       })
     }
-    this.attributes$.next([attr,maxAttr]);
+    this.attributes$.next([attr,maxAttr,ratioAttr]);
   }
 
 
