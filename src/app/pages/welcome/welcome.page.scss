@@ -1,5 +1,5 @@
 .toolbar{
-    --background: var(--ion-color-dark);
+    --background: var(--ion-color-primary);
 }
 
 .center-div{
@@ -11,7 +11,7 @@
 .welcome-text {
     font-size: 36pt;
     font-weight: bold;
-    font-family: 'Times New Roman', Times, serif;
+    font-family:'Times New Roman', Times, serif;
     color: var(--ion-color-primary);
 }
 
@@ -44,5 +44,4 @@
 .login-button{
     width: 100%;
     margin-top: 10%;
-    border-radius: 5px;
 }
