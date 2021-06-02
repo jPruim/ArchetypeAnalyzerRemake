@@ -1,9 +1,20 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>welcome</ion-title>
+  <ion-toolbar class="toolbar">
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <img class="main-logo" src="assets/in-app-svgs/jumpstart-main-logo.svg">
+  <div class="center-div">
+    <ion-label class="welcome-text">Welcome</ion-label>
+    <div>
+      <ion-label type="email" class="input-label">Username</ion-label>
+      <ion-input class="input"></ion-input>
+    </div>
+    <div>
+      <ion-label class="input-label">Password</ion-label>
+      <ion-input type="password" class="input"></ion-input>
+    </div>
+    <ion-button shape="round" class="login-button"> Login </ion-button>
+  </div>
 </ion-content>
