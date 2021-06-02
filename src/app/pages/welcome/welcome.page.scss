@@ -1,0 +1,48 @@
+.toolbar{
+    --background: var(--ion-color-dark);
+}
+
+.center-div{
+    margin: 5%;
+    width: 90%;
+    text-align: center;
+}
+
+.welcome-text {
+    font-size: 36pt;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    color: var(--ion-color-primary);
+}
+
+.input-label {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 24pt;
+    display: block;
+    margin: auto;
+    color: var(--ion-color-secondary);
+}
+
+.input {
+    display:block;
+    width: 100%;
+    color: var(--ion-color-secondary);
+    border-radius: 15px;
+    height: 30px;
+    border-style: solid;
+    border-color: var(--ion-color-primary);
+    border-width: 1px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.main-logo{
+    width: 90%;
+    margin-top: 20%;
+    margin-bottom: 20%;
+    margin-left: 5%;
+}
+.login-button{
+    width: 100%;
+    margin-top: 10%;
+    border-radius: 5px;
+}
