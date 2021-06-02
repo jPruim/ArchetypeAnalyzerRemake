@@ -3,6 +3,8 @@
 
 Install node.js, then Ionic 
 
+Navigate to folder containing repo
+
 Run npm install
 
 Ionic serve
