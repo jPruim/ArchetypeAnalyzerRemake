@@ -64,19 +64,13 @@ export class UserService {
         }
       })
     })
-    console.log("fam:");
-    console.log(fam);
     let familySum = 0;
     Object.keys(fam).forEach((family) => {
       familySum = familySum + Math.abs(fam[family]);
     })
-    console.log("familySum:");
-    console.log(familySum);
     Object.keys(fam).forEach((family) => {
       percentFam[family] = Math.trunc(fam[family]*100/familySum);
     })
-    console.log("percentFam:");
-    console.log(percentFam);
     this.maxAttributes$.next(maxAttr);
     this.attributes$.next(attr);
     this.ratioAttributes$.next(ratioAttr);
