@@ -11,9 +11,8 @@ import { QuestionService } from './question.service';
 export class UserService {
   public loggedIn: boolean;
   public answers$: BehaviorSubject<Array<QuestionAnswer>>;
-  public attributes$ = new BehaviorSubject<AttributeValue>({}); //With ratioAttributes being added, attributres and maxAttributes may not need to be exposed, i.e. could use something simpler than a BehaviorSubject
-  public maxAttributes$ = new BehaviorSubject<AttributeValue>({});
-  public ratioAttributes$ = new BehaviorSubject<AttributeValue>({});
+  //index of 0 is attributes, 1 is max attributes
+  public attributes$ = new BehaviorSubject<AttributeValue[]>([{},{},{}]);
 
   public families$ = new BehaviorSubject<FamilyValue>({});
   public percentFamilies$ = new BehaviorSubject<FamilyValue>({});
@@ -32,23 +31,23 @@ export class UserService {
   }
 
   calculateAttributes() {
-    let attr = this.attributes$.getValue();
-    let maxAttr = this.maxAttributes$.getValue();
-    let ratioAttr = this.ratioAttributes$.getValue();
-
-    let fam = this.families$.getValue();
-    let percentFam = this.percentFamilies$.getValue();
-
     if (this.answers.length == 0) {
       return;
     }
+    let attr = {};
+    let maxAttr = {};
+    let ratioAttr = {};
+
+    let fam = {};
+    let percentFam = {};
+
     for (let i = 0; i < this.answers.length; i++) {
       let q = this.questionList[this.answers[i].id]
       Object.keys(q).forEach((el) => {
         if (this.qService.isAttributeKey(el)) {
           let attrVal = q[el] * this.qService.getNumericalValue(this.answers[i].response)
-          attr[el] = attr[el] + q[el] * attrVal || attrVal;
-          maxAttr[el] = maxAttr[el] + q[el] * 3 || q[el] * 3;
+          attr[el] = attr[el] + attrVal || attrVal;
+          maxAttr[el] = maxAttr[el] + Math.abs(q[el]) * 3 || Math.abs(q[el]) * 3;
           ratioAttr[el] = Math.trunc(attr[el]*100/maxAttr[el]);
         }
       })
@@ -71,9 +70,7 @@ export class UserService {
     Object.keys(fam).forEach((family) => {
       percentFam[family] = Math.trunc(fam[family]*100/familySum);
     })
-    this.maxAttributes$.next(maxAttr);
-    this.attributes$.next(attr);
-    this.ratioAttributes$.next(ratioAttr);
+    this.attributes$.next([attr,maxAttr,ratioAttr]);
     this.percentFamilies$.next(percentFam);
   }
 

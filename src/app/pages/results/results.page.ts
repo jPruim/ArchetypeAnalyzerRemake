@@ -17,15 +17,15 @@ export class ResultsPage implements OnInit {
   public familyDisplay: Array<FamilyDisplay>;
 
   constructor(private uService: UserService) {
-    this.attributes = this.uService.attributes$.getValue();
-    this.maxAttributes = this.uService.maxAttributes$.getValue();
-    this.ratioAttributes = this.uService.ratioAttributes$.getValue();
+    this.attributes = this.uService.attributes$.getValue()[0];
+    this.maxAttributes = this.uService.attributes$.getValue()[1];
+    this.ratioAttributes = this.uService.attributes$.getValue()[2];
     this.uService.attributes$.subscribe((val) => {
-      this.attributes = val;
+      this.attributes = val[0];
+      this.maxAttributes = val[1];
+      this.ratioAttributes = val[2];
       this.generateAttributeTable();
     });
-    this.uService.maxAttributes$.subscribe((val) => this.maxAttributes = val);
-    this.uService.ratioAttributes$.subscribe((val) => this.ratioAttributes = val);
     this.uService.percentFamilies$.subscribe((val) => {
       this.percentFamilies = val;
       this.generateFamilyTable();
