@@ -16,6 +16,10 @@ const routes: Routes = [
         loadChildren: () => import('../pages/results/results.module').then(m => m.ResultsPageModule)
       },
       {
+        path: 'contribute',
+        loadChildren: () => import('../pages/contribute/contribute.module').then(m => m.ContributePageModule)
+      },
+      {
         path: 'help',
         loadChildren: () => import('../pages/help/help.module').then(m => m.HelpPageModule)
       },
