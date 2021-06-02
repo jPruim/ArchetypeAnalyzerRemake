@@ -11,7 +11,7 @@ export class UserService {
   public loggedIn: boolean;
   public answers$: BehaviorSubject<Array<QuestionAnswer>>;
   //index of 0 is attributes, 1 is max attributes
-  public attributes$ = new BehaviorSubject<AttributeValue[]>([]);
+  public attributes$ = new BehaviorSubject<AttributeValue[]>([{},{}]);
 
   private answers: Array<QuestionAnswer>;
   private questionList = QuestionDictionary;
