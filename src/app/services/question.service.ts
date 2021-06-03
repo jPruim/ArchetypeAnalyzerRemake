@@ -11,24 +11,24 @@ export class QuestionService {
   public question$: BehaviorSubject<Question>
   private fullQuestionList = QuestionDictionary
   private usedQuestionList: Array<Question>
-  private whichQuestionList = "full";
+  private whichQuestionList = "family";
   constructor() {
-    this.usedQuestionList = this.createQuestionList("family");
-    this.question$ = new BehaviorSubject(this.getQuestion(this.usedQuestionList));
+    this.usedQuestionList = this.createQuestionList(this.whichQuestionList);
+    this.question$ = new BehaviorSubject(this.getQuestion());
   }
   createQuestionList(whichList): Array<Question> {
-    let newQuestionList: Array<Question>
+    let newQuestionList: Array<Question> = []
     switch(whichList) {
       case "full":
         return this.fullQuestionList;
       case "family":
-        let famAttr: Array<String>
+        let famAttr: Array<String> = []
         let qAdded = false;
         AttributesToFamiliesDictionary.forEach((famCon) => {
           famAttr.push(famCon.attribute);
         })
         this.fullQuestionList.forEach((question) => {
-          question.forEach((key) => {
+          Object.keys(question).forEach((key) => {
             if(this.isAttributeKey(key)) {
               famAttr.forEach((attribute) => {
                 if(key == attribute) {
@@ -47,11 +47,11 @@ export class QuestionService {
         return newQuestionList;
     }
   }
-  getQuestion(questionList): Question {
-    return questionList[Math.floor(Math.random() * questionList.length)]
+  getQuestion(): Question {
+    return this.usedQuestionList[Math.floor(Math.random() * this.usedQuestionList.length)]
   }
   nextQuestion() {
-    this.question$.next(this.getQuestion(this.usedQuestionList))
+    this.question$.next(this.getQuestion())
   }
 
   isAttributeKey(key: string) {
