@@ -9,7 +9,7 @@
     <p class="subtitle">Family Report</p>
     <ion-card *ngFor="let item of FamilyReport" class="attribute-ion-card">
       <ion-card-header>
-        <ion-card-title class="attribute-label"> {{item}}</ion-card-title>
+        <ion-card-title class="attribute-label"> {{item[0]}}:<br />{{item[1]}}</ion-card-title>
       </ion-card-header>
     </ion-card>
   </div>
