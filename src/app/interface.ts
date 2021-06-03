@@ -331,8 +331,11 @@ export interface FamilyDisplay {
 
 export interface FamilyReportDisplay {
     family: string;
+    members: string;
     description: string;
     challenges: string;
     relationships: string;
     tips: string;
+    fit: string;
+    strategies: string;
 }

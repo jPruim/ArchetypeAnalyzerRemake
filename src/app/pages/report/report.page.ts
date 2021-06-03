@@ -44,6 +44,9 @@ export class ReportPage implements OnInit {
           label = "Family";
           subreport = "The " + subreport[0].toUpperCase() + subreport.substr(1) + " Family"
           break;
+        case "members":
+          label = "Members";
+          break;
         case "description":
           label = "Description";
           break;
@@ -55,6 +58,14 @@ export class ReportPage implements OnInit {
           break;
         case "tips":
           label = "Brand Storytelling Tips";
+          break;
+        case "fit":
+          label = "Job Tendencies FIT Role Scores";
+          subreport = "Coming Soon.";
+          break;
+        case "strategies":
+          label = "Anti-Racism Strategies";
+          subreport = "Coming Soon.";
           break;
       }
       dis.push([label,subreport]);
