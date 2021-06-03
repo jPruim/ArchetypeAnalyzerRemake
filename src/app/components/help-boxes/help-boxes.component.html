@@ -1,0 +1,7 @@
+<div class="expandable-div" >
+  <ion-item class="qItem" lines="none" (click)="handleClick()">
+    <ion-text class="title-text">{{questionTitle}}</ion-text>
+    <ion-icon slot="end" name="add"></ion-icon>
+  </ion-item>
+  <ion-text *ngIf="expand" class="info-text">{{infoText}}</ion-text>
+</div>

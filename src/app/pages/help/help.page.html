@@ -1,9 +1,18 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Help</ion-title>
+  <ion-toolbar class="toolbar">
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <p>Welcome to the future help page</p>
+  <img src="assets/in-app-svgs/person-logo.svg" class="person-icon">
+  <div class="title-div">
+    <ion-text class="page-title">FAQ</ion-text>
+  </div>
+  <div class="center-div">
+    <app-help-boxes questionTitle="Question 1"></app-help-boxes>
+    <app-help-boxes questionTitle="Question 2"></app-help-boxes>
+    <app-help-boxes questionTitle="Question 3"></app-help-boxes>
+    <app-help-boxes questionTitle="Question 4"></app-help-boxes>
+    <app-help-boxes questionTitle="Question 5"></app-help-boxes>
+  </div>
 </ion-content>
