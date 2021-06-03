@@ -11,7 +11,7 @@ import { FamilyReports } from 'src/assets/FamilyReports';
 export class ReportPage implements OnInit {
   public maxFamily: string;
   public FamilyReportDisplay: FamilyReportDisplay;
-  public FamilyReport: Array<string>;
+  public FamilyReport: Array<Array<string>>;
   private familyReports = FamilyReports;
 
   constructor(private uService: UserService) {
@@ -28,7 +28,7 @@ export class ReportPage implements OnInit {
     if (this.maxFamily == "tie" || this.maxFamily == "") {
       return;
     }
-    let dis: Array<string> = [];
+    let dis: Array<Array<string>> = [];
     this.familyReports.forEach((report) => {
       if (this.maxFamily == report.family) {
         this.FamilyReportDisplay = report;
@@ -37,9 +37,28 @@ export class ReportPage implements OnInit {
     })
     
     Object.keys(this.FamilyReportDisplay).forEach(key => {
-      dis.push(this.FamilyReportDisplay[key]);
+      let label = key;
+      let subreport = this.FamilyReportDisplay[key];
+      switch(key) {
+        case "family":
+          label = "Family";
+          subreport = "The " + subreport[0].toUpperCase() + subreport.substr(1) + " Family"
+          break;
+        case "description":
+          label = "Description";
+          break;
+        case "challenges":
+          label = "Challenges Faced";
+          break;
+        case "relationships":
+          label = "Relationships to Other Types";
+          break;
+        case "tips":
+          label = "Brand Storytelling Tips";
+          break;
+      }
+      dis.push([label,subreport]);
     })
-    dis[0] = "The " + dis[0][0].toUpperCase() + dis[0].substr(1) + " Family";
     this.FamilyReport = dis;
   }
 
