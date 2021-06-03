@@ -12,6 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 export class QuestionPage implements OnInit {
   public question: Question;
   private answers: QuestionAnswer[];
+  public questionnaireName: string="Questionnaire";
   constructor(private qService: QuestionService, private uService: UserService) {
     this.qService.question$.subscribe(value => this.question = value);
     this.uService.answers$.subscribe(val => this.answers = val);
