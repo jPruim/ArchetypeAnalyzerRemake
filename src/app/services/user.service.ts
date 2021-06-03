@@ -58,7 +58,7 @@ export class UserService {
         if (el == conAttr.attribute) {
           Object.keys(conAttr).forEach((conFam) => {
             if (conFam !== "attribute") {
-              fam[conFam] = conAttr[conFam]*attr[el];
+              fam[conFam] = fam[conFam] + conAttr[conFam]*attr[el] || conAttr[conFam]*attr[el];
             }
           })
         }
@@ -90,6 +90,8 @@ export class UserService {
     if (maxFamilytie) {
       maxFamily = "tie";
     }
+    console.log(familySum);
+    console.log(fam);
 
     this.attributes$.next([attr,maxAttr,ratioAttr]);
     this.percentFamilies$.next(percentFam);
