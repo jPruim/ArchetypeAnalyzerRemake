@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { QuestionDictionary } from 'src/assets/QuestionList';
+import { AttributesToFamiliesDictionary } from '../../assets/AttributesToFamilies';
 import { Question } from '../interface';
 
 @Injectable({
@@ -8,12 +9,46 @@ import { Question } from '../interface';
 })
 export class QuestionService {
   public question$: BehaviorSubject<Question>
-  private questionList = QuestionDictionary
+  private fullQuestionList = QuestionDictionary
+  private usedQuestionList: Array<Question>
+  private whichQuestionList = "family";
   constructor() {
+    this.usedQuestionList = this.createQuestionList(this.whichQuestionList);
     this.question$ = new BehaviorSubject(this.getQuestion());
   }
+  createQuestionList(whichList): Array<Question> {
+    let newQuestionList: Array<Question> = []
+    switch(whichList) {
+      case "full":
+        return this.fullQuestionList;
+      case "family":
+        let famAttr: Array<String> = []
+        let qAdded = false;
+        AttributesToFamiliesDictionary.forEach((famCon) => {
+          famAttr.push(famCon.attribute);
+        })
+        this.fullQuestionList.forEach((question) => {
+          Object.keys(question).forEach((key) => {
+            if(this.isAttributeKey(key)) {
+              famAttr.forEach((attribute) => {
+                if(key == attribute) {
+                  newQuestionList.push(question);
+                  qAdded = true;
+                  return;
+                }
+              })
+            }
+            if(qAdded == true) {
+              qAdded = false;
+              return;
+            }
+          })
+        })
+        return newQuestionList;
+    }
+  }
   getQuestion(): Question {
-    return this.questionList[Math.floor(Math.random() * this.questionList.length)]
+    return this.usedQuestionList[Math.floor(Math.random() * this.usedQuestionList.length)]
   }
   nextQuestion() {
     this.question$.next(this.getQuestion())
