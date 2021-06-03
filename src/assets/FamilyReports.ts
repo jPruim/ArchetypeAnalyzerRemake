@@ -2,14 +2,14 @@ import { FamilyReportDisplay } from "src/app/interface";
 
 export const FamilyReports: FamilyReportDisplay[] = [
     {
-        family: "Caregiver",
+        family: "caregiver",
         description: "The Caregiver famlly is defined by their sacrifice for, support of, and service to others. The family is united by a strong belief in good communication, compasion, humanity, love, respect, and responsibility.",
         challenges: "This family often sacrifices their personal \"self\" needs in preference to the needs of others. Caregiver family members may become lost if they don't have someone to care for.",
         relationships: "The Caregiver family supports others in a personal and caring way. They will often seek out and care for others without an expectation of return. Other types may come to heavily rely on the Caregiver family and while this family is defined by caring for others, teams should be careful not to take away their self expression.",
         tips: "Lean into showing others that you care for them and what causes you support. Remember to also find affirming ways to set expectaions and limits so that you can still care for yourself."
     },
     {
-        family: "Citizen",
+        family: "citizen",
         description: "The Citizen family is known for good communication, care for humanity, and being good listeners. They leverage these skills in taking civic action and roles in leadership that support others. ",
         challenges: "The Citizen family often favors stability and service over change. This can be problematic when systems or leaders need changing.",
         relationships: "The Citizen family can be found in support roles and are comitted to their civic duty. On a team they will do their part to keep things moving along toward the agreed upon goal.",

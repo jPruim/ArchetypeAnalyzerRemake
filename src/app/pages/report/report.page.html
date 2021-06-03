@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>report</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="maxFamily !== '' && maxFamily !== 'tie'">
+    <p class="subtitle">Family Report</p>
+    <ion-card *ngFor="let item of FamilyReport" class="attribute-ion-card">
+      <ion-card-header>
+        <ion-card-title class="attribute-label"> {{item}}</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </div>
+  <div *ngIf="maxFamily == 'tie'">
+    <p class="subtitle">More data is needed to determine your family.</p>
+    <p class="middletext">Answer some more questions</p>
+  </div>
+  <div *ngIf="maxFamily == ''">
+    <p class="subtitle">You have no Data!</p>
+    <p class="middletext">Answer some questions first</p>
+  </div>
+</ion-content>

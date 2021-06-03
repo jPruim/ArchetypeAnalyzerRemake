@@ -16,6 +16,7 @@ export class UserService {
 
   public families$ = new BehaviorSubject<FamilyValue>({});
   public percentFamilies$ = new BehaviorSubject<FamilyValue>({});
+  public maxFamily$ = new BehaviorSubject<string>("");
 
   private answers: Array<QuestionAnswer>;
   private questionList = QuestionDictionary;
@@ -70,8 +71,26 @@ export class UserService {
     Object.keys(fam).forEach((family) => {
       percentFam[family] = Math.trunc(fam[family]*100/familySum);
     })
+    let maxFamily = "";
+    let maxFamilyPercent = -101;
+    let maxFamilytie = false;
+    Object.keys(percentFam).forEach((family) => {
+      if (percentFam[family] > maxFamilyPercent) {
+        maxFamilyPercent = percentFam[family];
+        maxFamily = family;
+        maxFamilytie = false;
+      }
+      else if (percentFam[family] == maxFamilyPercent) {
+        maxFamilytie = true;
+      }
+    })
+    if (maxFamilytie) {
+      maxFamily = "tie";
+    }
+
     this.attributes$.next([attr,maxAttr,ratioAttr]);
     this.percentFamilies$.next(percentFam);
+    this.maxFamily$.next(maxFamily);
   }
 
 
