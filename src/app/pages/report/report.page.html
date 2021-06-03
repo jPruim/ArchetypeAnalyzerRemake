@@ -7,9 +7,9 @@
 <ion-content>
   <div *ngIf="maxFamily !== '' && maxFamily !== 'tie'">
     <p class="subtitle">Family Report</p>
-    <ion-card *ngFor="let item of dis" class="attribute-ion-card">
+    <ion-card *ngFor="let item of FamilyReport" class="attribute-ion-card">
       <ion-card-header>
-        <ion-card-title class="attribute-label"> {{item.family}} {{item.percent}}</ion-card-title>
+        <ion-card-title class="attribute-label"> {{item}}</ion-card-title>
       </ion-card-header>
     </ion-card>
   </div>

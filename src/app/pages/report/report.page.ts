@@ -32,12 +32,14 @@ export class ReportPage implements OnInit {
     this.familyReports.forEach((report) => {
       if (this.maxFamily == report.family) {
         this.FamilyReportDisplay = report;
+        return; //forEach accepts a function, so this return just ends the ForEach
       }
     })
     
     Object.keys(this.FamilyReportDisplay).forEach(key => {
       dis.push(this.FamilyReportDisplay[key]);
     })
+    dis[0] = "The " + dis[0][0].toUpperCase() + dis[0].substr(1) + " Family";
     this.FamilyReport = dis;
   }
 
