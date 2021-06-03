@@ -8,15 +8,19 @@ import { Question } from '../interface';
 })
 export class QuestionService {
   public question$: BehaviorSubject<Question>
-  private questionList = QuestionDictionary
+  private fullQuestionList = QuestionDictionary
+  private whichQuestionList = "full";
   constructor() {
-    this.question$ = new BehaviorSubject(this.getQuestion());
+    this.question$ = new BehaviorSubject(this.getQuestion(this.fullQuestionList));
   }
-  getQuestion(): Question {
-    return this.questionList[Math.floor(Math.random() * this.questionList.length)]
+  createQuestionList(): Array<Question> {
+    return this.fullQuestionList;
+  }
+  getQuestion(questionList): Question {
+    return questionList[Math.floor(Math.random() * questionList.length)]
   }
   nextQuestion() {
-    this.question$.next(this.getQuestion())
+    this.question$.next(this.getQuestion(this.fullQuestionList))
   }
 
   isAttributeKey(key: string) {
