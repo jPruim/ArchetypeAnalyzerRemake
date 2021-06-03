@@ -11,6 +11,7 @@ import { FamilyReports } from 'src/assets/FamilyReports';
 export class ReportPage implements OnInit {
   public maxFamily: string;
   public FamilyReportDisplay: FamilyReportDisplay;
+  public FamilyReport: Array<string>;
   private familyReports = FamilyReports;
 
   constructor(private uService: UserService) {
@@ -24,11 +25,20 @@ export class ReportPage implements OnInit {
   }
 
   generateFamilyReport() {
-    if (this.maxFamily == "tie") {
+    if (this.maxFamily == "tie" || this.maxFamily == "") {
       return;
     }
-
-    this.FamilyReportDisplay = this.familyReports[this.maxFamily];
+    let dis: Array<string> = [];
+    this.familyReports.forEach((report) => {
+      if (this.maxFamily == report.family) {
+        this.FamilyReportDisplay = report;
+      }
+    })
+    
+    Object.keys(this.FamilyReportDisplay).forEach(key => {
+      dis.push(this.FamilyReportDisplay[key]);
+    })
+    this.FamilyReport = dis;
   }
 
 }
