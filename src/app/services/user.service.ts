@@ -40,7 +40,20 @@ export class UserService {
     let ratioAttr = {};
 
     let fam = {};
-    let percentFam = {};
+    let percentFam = {
+      caregiver: 0,
+      citizen: 0,
+      creator: 0,
+      explorer: 0,
+      hero: 0,
+      innocent: 0,
+      jester: 0,
+      lover: 0,
+      magician: 0,
+      rebel: 0,
+      sage: 0,
+      sovereign: 0
+    };
 
     for (let i = 0; i < this.answers.length; i++) {
       let q = this.questionList[this.answers[i].id]
