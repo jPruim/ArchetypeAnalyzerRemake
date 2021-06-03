@@ -73,7 +73,10 @@ export class UserService {
     })
     let maxFamily = "";
     let maxFamilyPercent = -101;
-    let maxFamilytie = false;
+    let maxFamilytie = true;
+    if (this.answers.length == 0) {
+      maxFamilytie = false
+    }
     Object.keys(percentFam).forEach((family) => {
       if (percentFam[family] > maxFamilyPercent) {
         maxFamilyPercent = percentFam[family];
