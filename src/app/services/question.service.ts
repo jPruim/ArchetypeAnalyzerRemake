@@ -28,19 +28,17 @@ export class QuestionService {
           famAttr.push(famCon.attribute);
         })
         this.fullQuestionList.forEach((question) => {
+          if(qAdded == true) {
+            qAdded = false;
+          }
           Object.keys(question).forEach((key) => {
-            if(this.isAttributeKey(key)) {
+            if(this.isAttributeKey(key) && qAdded == false) {
               famAttr.forEach((attribute) => {
-                if(key == attribute) {
+                if(key == attribute && qAdded == false) {
                   newQuestionList.push(question);
                   qAdded = true;
-                  return;
                 }
               })
-            }
-            if(qAdded == true) {
-              qAdded = false;
-              return;
             }
           })
         })
