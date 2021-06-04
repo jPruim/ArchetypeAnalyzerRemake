@@ -1,25 +1,25 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Questionnaire
-    </ion-title>
+<ion-header [translucent]="false">
+  <ion-toolbar class="toolbar">
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Questionnaire</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <img src="assets/in-app-svgs/person-logo.svg" class="person-icon">
+  <div class="question-title-div">
+    <ion-text class="question-title font">{{questionnaireName}}</ion-text>
+  </div>
   <div class="question-div">
-    <ion-text class="question-text">{{question?.text}}</ion-text>
+    <ion-text class="question-text font">{{question?.text}}</ion-text>
   </div>
   <div>
-    <ion-button id="3" (click)="nextQuestion(3)" class="answer-button">Strongly Agree</ion-button>
-    <ion-button id="2" (click)="nextQuestion(2)" class="answer-button"> Agree</ion-button>
-    <ion-button id="1" (click)="nextQuestion(1)" class="answer-button">Disagree</ion-button>
-    <ion-button id="0" (click)="nextQuestion(0)" class="answer-button">Strongly Disagree</ion-button>
+    <ion-button shape="round" size="small" id="3" (click)="nextQuestion(3)" class="answer-button font2">Strongly Agree</ion-button>
+    <ion-button shape="round" size="small" id="2" (click)="nextQuestion(2)" class="answer-button font2"> Agree</ion-button>
+    <ion-button shape="round" size="small" id="1" (click)="nextQuestion(1)" class="answer-button font2">Disagree</ion-button>
+    <ion-button shape="round" size="small" id="0" (click)="nextQuestion(0)" class="answer-button font2">Strongly Disagree</ion-button>
+  </div>
+
+  <div class="footer-div">
+    <ion-button shape="round" size="small" class="answer-button font2">View Sample Results</ion-button>
   </div>
 
 </ion-content>
