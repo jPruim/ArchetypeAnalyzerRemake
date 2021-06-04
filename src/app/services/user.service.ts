@@ -103,8 +103,6 @@ export class UserService {
     if (maxFamilytie) {
       maxFamily = "tie";
     }
-    console.log(familySum);
-    console.log(fam);
 
     this.attributes$.next([attr,maxAttr,ratioAttr]);
     this.percentFamilies$.next(percentFam);
