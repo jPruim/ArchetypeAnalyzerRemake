@@ -46,7 +46,10 @@ export class QuestionService {
     }
   }
   getQuestion(): Question {
-    return this.usedQuestionList[Math.floor(Math.random() * this.usedQuestionList.length)]
+    let index = Math.floor(Math.random() * this.usedQuestionList.length);
+    let pickedQuestion = this.usedQuestionList[index];
+    this.usedQuestionList.splice(index,1);
+    return pickedQuestion;
   }
   nextQuestion() {
     this.question$.next(this.getQuestion())
