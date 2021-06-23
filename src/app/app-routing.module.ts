@@ -2,15 +2,19 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
- 
-  // {
-  //   path: '',
-  //   loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  // },
+
+  {
+    path: '',
+    loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomePageModule),
+    pathMatch: 'full'
+  },
+  {
+    path: '',
+    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+  },
   {
     path: 'app',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule),
-    pathMatch: 'prefix'
+    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
     path: 'splash',
@@ -40,12 +44,7 @@ const routes: Routes = [
     path: 'modal-root',
     loadChildren: () => import('./pages/modal-root/modal-root.module').then( m => m.ModalRootPageModule)
   },
-  {
-    path: '',
-    loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomePageModule), 
-    pathMatch: 'full'
-  },
- 
+
 ];
 @NgModule({
   imports: [
