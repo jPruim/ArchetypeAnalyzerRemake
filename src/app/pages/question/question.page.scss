@@ -55,8 +55,12 @@
     margin: 5px auto;
     text-transform: uppercase;
     font-weight: normal;
-    font-size:3vw;
+    font: size 24pt;
 }
+@media (max-width: 600px) {
+   .answer-button{
+    font-size: 3vw;
+   } }
 
 .footer-div{
     position: absolute;

@@ -4,17 +4,30 @@
 </ion-header>
 
 <ion-content>
-  <img class="main-logo" src="assets/in-app-svgs/jumpstart-main-logo.svg">
   <div class="center-div">
-    <ion-label class="welcome-text">Welcome</ion-label>
+    <img class="main-logo" src="assets/in-app-svgs/jumpstart-main-logo.svg">
+    <ion-label *ngIf="showLogin" class="welcome-text">Welcome</ion-label>
     <div>
-      <ion-label type="email" class="input-label">Username</ion-label>
-      <ion-input class="input"></ion-input>
+      <ion-label type="email" class="input-label" >Email</ion-label>
+      <ion-input class="input" [(ngModel)]="enteredEmail"></ion-input>
     </div>
     <div>
-      <ion-label class="input-label">Password</ion-label>
-      <ion-input type="password" class="input"></ion-input>
+      <ion-label class="input-label" >Password</ion-label>
+      <ion-input type="password" class="input" [(ngModel)]="enteredPwd"></ion-input>
     </div>
-    <ion-button shape="round" class="login-button"> Login </ion-button>
+    <div *ngIf="!showLogin">
+      <ion-label class="input-label" >Confrim Password</ion-label>
+      <ion-input type="password" class="input" [(ngModel)]="enteredPwd2"></ion-input>
+    </div>
+    <div *ngIf="showLogin" class="toggle-div">
+      <ion-text>No account? </ion-text>
+      <ion-text class="link-text" (click)="toggleStatus()">Create Account</ion-text>
+    </div>
+    <div *ngIf="!showLogin" class="toggle-div">
+      <ion-text>Already have an account? </ion-text>
+      <ion-text class="link-text" (click)="toggleStatus()">Login</ion-text>
+    </div>
+    <ion-button *ngIf="showLogin" shape="round" class="login-button" (click)="attemptLogin()"> Login </ion-button>
+    <ion-button *ngIf="!showLogin" shape="round" class="login-button" (click)="attemptCreate()"> Create Account </ion-button>
   </div>
 </ion-content>

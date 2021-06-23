@@ -3,8 +3,8 @@
 }
 
 .center-div{
-    margin: 5%;
-    width: 90%;
+    width: 540px;
+    margin: auto;
     text-align: center;
 }
 
@@ -36,12 +36,33 @@
 }
 
 .main-logo{
-    width: 90%;
+    width: 540px;
     margin-top: 20%;
     margin-bottom: 20%;
-    margin-left: 5%;
+    
 }
 .login-button{
     width: 100%;
     margin-top: 10%;
+}
+
+.link-text{
+    text-decoration: underline;
+    color: var(--ion-color-secondary);
+}
+.toggle-div{
+    margin-top: 5px;
+}
+
+@media (max-width: 600px){
+    .main-logo{
+        width: 90%;
+        margin-top: 20%;
+        margin-bottom: 20%;
+        margin-left: 5%;
+    }
+    .center-div{
+        margin: 5%;
+        width: 90%;
+    }
 }
