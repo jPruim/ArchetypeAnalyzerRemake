@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -6,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
+  public currentUser: string;
 
-  constructor() { }
+  constructor(private authService:AuthService) {
 
+    this.authService.emailSubject.subscribe( (val) => this.currentUser);
+
+   }
+  
   ngOnInit() {
   }
 
