@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-welcome',
@@ -14,8 +15,7 @@ export class WelcomePage implements OnInit {
   public enteredPwd2: string = "";
 
   public showLogin: boolean = true;
-
-  constructor(private authService: AuthService, private navController: NavController) { }
+  constructor(private authService: AuthService, private navController: NavController, private sService: StorageService) { }
 
   ngOnInit() {
   }
@@ -25,6 +25,8 @@ export class WelcomePage implements OnInit {
     if(success){
       this.authService.showOkayAlert("Logged in!");
       this.navController.navigateForward('app');
+      await this.sService.downloadAnswersToApp();
+      this.sService.startSubscription();
     }else{
       this.authService.showOkayAlert("Unknown error occured. Code 36");
     }
@@ -46,6 +48,8 @@ export class WelcomePage implements OnInit {
     let success = await this.authService.createAccount(this.enteredEmail,this.enteredPwd);
     if(success){
       this.authService.showOkayAlert("Logged in!");
+      await this.sService.downloadAnswersToApp();
+      this.sService.startSubscription();
       this.navController.navigateForward('app');
     }else{
       this.authService.showOkayAlert("Unknown error occured. Code 37");
