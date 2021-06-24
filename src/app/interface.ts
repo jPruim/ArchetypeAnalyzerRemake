@@ -8,6 +8,10 @@ export interface QuestionAnswer {
     response: number, //3 is strongly agree, 2 is agree, 1 is disagree, 0 is strongly disagree
 }
 
+export interface FirebaseAnswerRef {
+    answers?: Array<QuestionAnswer>,
+}
+
 export interface AttributeValue {
     questionSet?: number;
     ability?: number;

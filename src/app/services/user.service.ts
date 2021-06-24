@@ -10,7 +10,7 @@ import { QuestionService } from './question.service';
 })
 export class UserService {
   public loggedIn: boolean;
-  public answers$: BehaviorSubject<Array<QuestionAnswer>>;
+  public answers$: BehaviorSubject<Array<QuestionAnswer>> = new BehaviorSubject([]);
   //index of 0 is attributes, 1 is max attributes
   public attributes$ = new BehaviorSubject<AttributeValue[]>([{},{},{}]);
 
@@ -24,7 +24,6 @@ export class UserService {
 
   constructor(private qService: QuestionService) {
     this.loggedIn = false;
-    this.answers$ = new BehaviorSubject([])
     this.answers$.subscribe(val => {
       this.answers = val;
       this.calculateAttributes();
