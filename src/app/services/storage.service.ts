@@ -22,9 +22,7 @@ export class StorageService {
 
   async getAnswerData(): Promise<FirebaseAnswerRef> {
     let res = await this.db.collection<FirebaseAnswerRef>("userAnswers").doc(this.aService.getCurrentUser().uid).ref.get();
-    console.log(res);
     if (res?.exists) {
-      console.log("res exists: ", res.data());
       return <FirebaseAnswerRef>res?.data();
     } else {
       return { answers: [] }
@@ -46,7 +44,6 @@ export class StorageService {
     if (!a) {
       a = []
     }
-    console.log("info from db: ", a);
     this.uService.answers$.next(a);
   }
 }
